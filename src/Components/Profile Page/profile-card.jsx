@@ -12,6 +12,8 @@ export default function ProfileCard() {
   const [completionYear, setCompletionYear] = useState("");
   const [linkedinUrl, setLinkedinUrl] = useState("");
   const [githubUrl, setGithubUrl] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
 
   //variable to handle location import
   const location = useLocation();
@@ -29,13 +31,17 @@ export default function ProfileCard() {
       setBio,
       setCompletionYear,
       setGithubUrl,
-      setLinkedinUrl
+      setLinkedinUrl,
+      setFirstname,
+      setLastname
     );
   }, [studentId]);
 
   return (
     <div>
-      <h2>User Profile</h2>
+      <h2>
+        {firstname} {lastname}'s Profile
+      </h2>
       <p>Bio: {bio}</p>
       <p>Completion Year: {completionYear}</p>
       <p>

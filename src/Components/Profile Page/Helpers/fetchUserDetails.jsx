@@ -6,26 +6,41 @@ const fetchUserDetails = async (
   setBio,
   setCompletionYear,
   setGithubUrl,
-  setLinkedinUrl
+  setLinkedinUrl,
+  setFirstname,
+  setLastname
 ) => {
   //if no student ID skip
   if (!studentId) return;
 
   //variables to handle suapa base query
-  const { data, error } = await supabase
+  const { data: details, error: detailsError } = await supabase
     .from("Students_Details")
     .select("*")
     .eq("id", studentId)
     .single();
 
   //if error log for user, else set states with whats returned
-  if (error) {
-    console.error("Error fetching user details", error.message);
-  } else if (data) {
-    setBio(data.bio || "");
-    setCompletionYear(data.completion_year || "");
-    setLinkedinUrl(data.linkedin_url || "");
-    setGithubUrl(data.github_url || "");
+  if (detailsError) {
+    console.error("Error fetching user details", detailsError.message);
+  } else if (details) {
+    setBio(details.bio || "");
+    setCompletionYear(details.completion_year || "");
+    setLinkedinUrl(details.linkedin_url || "");
+    setGithubUrl(details.github_url || "");
+  }
+
+  const { data: profile, error: profileError } = await supabase
+    .from("Students_Profile")
+    .select("*")
+    .eq("id", studentId)
+    .single();
+
+  if (profileError) {
+    console.error("Error fetching user profile", profileError.message);
+  } else if (profile) {
+    setFirstname(profile.firstname || "");
+    setLastname(profile.lastname || "");
   }
 };
 
