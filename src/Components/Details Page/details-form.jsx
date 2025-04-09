@@ -5,8 +5,8 @@ import { supabase } from "../../supabaseClient";
 
 //import helpers
 import submitUserDetails from "./Helpers/submitUserDetails";
-
 import navigateProfilePage from "../Profile Page/Helpers/navigateProfilePage";
+import buttonStyle from "../Styles/buttonStyle";
 
 export default function DetailsForm() {
   //state variables to handle user data
@@ -37,6 +37,7 @@ export default function DetailsForm() {
         return;
       }
     };
+    //call function
     checkSession();
   }, [studentId, navigate]);
 
@@ -61,7 +62,10 @@ export default function DetailsForm() {
 
   return (
     <div>
-      <button onClick={() => navigateProfilePage(studentId, navigate)}>
+      <button
+        className={buttonStyle()}
+        onClick={() => navigateProfilePage(studentId, navigate)}
+      >
         Profile Page
       </button>
       <form onSubmit={handleSubmit}>
@@ -89,7 +93,9 @@ export default function DetailsForm() {
           value={githubUrl}
           onChange={(e) => setGithubUrl(e.target.value)}
         ></input>
-        <button type="submit">Submit</button>
+        <button className={buttonStyle()} type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );

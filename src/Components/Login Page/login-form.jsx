@@ -6,6 +6,7 @@ import { supabase } from "../../supabaseClient";
 //importing helper function
 import submitUserLogin from "./Helpers/submitUserLogin";
 import navigateSignUpPage from "../SignUp Page/Helpers/navigateSignUpPage";
+import buttonStyle from "../Styles/buttonStyle";
 
 //defining function
 export default function LoginForm() {
@@ -40,7 +41,12 @@ export default function LoginForm() {
 
   return (
     <div className="flex flex-col justify-center items-center h-screen w-screen">
-      <button onClick={() => navigateSignUpPage(navigate)}>signUp</button>
+      <button
+        className={buttonStyle()}
+        onClick={() => navigateSignUpPage(navigate)}
+      >
+        signUp
+      </button>
       <form
         onSubmit={handleSubmit}
         className="relative w-96 border-2 rounded-4xl shadow-2xl p-30 "
@@ -62,7 +68,9 @@ export default function LoginForm() {
             onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
-        <button type="submit">Sign In</button>
+        <button className={buttonStyle()} type="submit">
+          Sign In
+        </button>
       </form>
     </div>
   );

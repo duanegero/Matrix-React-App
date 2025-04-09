@@ -7,6 +7,7 @@ import fetchUserDetails from "./Helpers/fetchUserDetails";
 import navigateDetailsPage from "../Details Page/Helpers/navigateDetailsPage";
 import handleLogout from "../handleLogout";
 import { supabase } from "../../supabaseClient";
+import buttonStyle from "../Styles/buttonStyle";
 
 export default function ProfileCard() {
   //state variables to handle user data
@@ -84,10 +85,15 @@ export default function ProfileCard() {
           {githubUrl}
         </a>
       </p>
-      <button onClick={() => navigateDetailsPage(studentId, navigate)}>
+      <button
+        className={buttonStyle()}
+        onClick={() => navigateDetailsPage(studentId, navigate)}
+      >
         Update
       </button>
-      <button onClick={() => handleLogout(navigate)}>Logout</button>
+      <button className={buttonStyle()} onClick={() => handleLogout(navigate)}>
+        Logout
+      </button>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import submitPicture from "./Helpers/submitPicture";
+import buttonStyle from "../Styles/buttonStyle";
 
 export default function DetailsPic() {
   //state variables yo handle image upload
@@ -53,7 +54,9 @@ export default function DetailsPic() {
       <form onSubmit={handleSubmit}>
         <label>Upload Profile Picture</label>
         <input type="file" name="image" onChange={handleFileChange}></input>
-        <button type="submit">Submit</button>
+        <button className={buttonStyle()} type="submit">
+          Upload
+        </button>
       </form>
     </div>
   );

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 //import helper function
 import submitUserSignUp from "./Helpers/submitUserSignUp";
+import buttonStyle from "../Styles/buttonStyle";
 
 export default function SignUpForm() {
   //state variable to handle user input
@@ -70,7 +71,9 @@ export default function SignUpForm() {
           type="date"
           required
         ></input>
-        <button type="submit">Sign Up</button>
+        <button className={buttonStyle()} type="submit">
+          Sign Up
+        </button>
       </form>
     </div>
   );

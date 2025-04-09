@@ -32,12 +32,14 @@ const fetchUserDetails = async (
     setProfilePic(details.profile_pic_url || "");
   }
 
+  //variables to handle suapa base query
   const { data: profile, error: profileError } = await supabase
     .from("Students_Profile")
     .select("*")
     .eq("id", studentId)
     .single();
 
+  //if error log for user, else set states with whats returned
   if (profileError) {
     console.error("Error fetching user profile", profileError.message);
   } else if (profile) {
