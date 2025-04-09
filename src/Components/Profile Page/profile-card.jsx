@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import fetchUserDetails from "./Helpers/fetchUserDetails";
 import navigateDetailsPage from "../Details Page/Helpers/navigateDetailsPage";
 import handleLogout from "../handleLogout";
+import { supabase } from "../../supabaseClient";
 
 export default function ProfileCard() {
   //state variables to handle user data
@@ -28,17 +29,34 @@ export default function ProfileCard() {
 
   //useEffect to call helper every time there's a new student ID
   useEffect(() => {
-    fetchUserDetails(
-      studentId,
-      setBio,
-      setCompletionYear,
-      setGithubUrl,
-      setLinkedinUrl,
-      setFirstname,
-      setLastname,
-      setProfilePic
-    );
-  }, [studentId]);
+    //async function to check if user is in a session
+    const checkSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      //if no session, redirect to login
+      if (!session) {
+        navigate("/", { replace: true });
+        return;
+      }
+
+      //fetch user details if session exists
+      fetchUserDetails(
+        studentId,
+        setBio,
+        setCompletionYear,
+        setGithubUrl,
+        setLinkedinUrl,
+        setFirstname,
+        setLastname,
+        setProfilePic
+      );
+    };
+
+    //call the function
+    checkSession();
+  }, [studentId, navigate]);
 
   return (
     <div>

@@ -1,6 +1,7 @@
 //imports from React
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { supabase } from "../../supabaseClient";
 
 //import helpers
 import submitUserDetails from "./Helpers/submitUserDetails";
@@ -22,6 +23,22 @@ export default function DetailsForm() {
   const studentId = queryParams.get("id");
   //variable to handle navigation
   const navigate = useNavigate();
+
+  useEffect(() => {
+    //async function to check if user is in a session
+    const checkSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      //if no session, redirect to login
+      if (!session) {
+        navigate("/", { replace: true });
+        return;
+      }
+    };
+    checkSession();
+  }, [studentId, navigate]);
 
   //variable to handle form submit
   const handleSubmit = async (event) => {
