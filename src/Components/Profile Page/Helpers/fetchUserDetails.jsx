@@ -8,7 +8,8 @@ const fetchUserDetails = async (
   setGithubUrl,
   setLinkedinUrl,
   setFirstname,
-  setLastname
+  setLastname,
+  setProfilePic
 ) => {
   //if no student ID skip
   if (!studentId) return;
@@ -28,6 +29,7 @@ const fetchUserDetails = async (
     setCompletionYear(details.completion_year || "");
     setLinkedinUrl(details.linkedin_url || "");
     setGithubUrl(details.github_url || "");
+    setProfilePic(details.profile_pic_url || "");
   }
 
   const { data: profile, error: profileError } = await supabase

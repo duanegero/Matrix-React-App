@@ -39,6 +39,7 @@ export default function DetailsPic() {
 
     //if success log url and clear input
     if (result.success) {
+      console.log(result);
       console.log("Image Url:", result.url);
       setSelectedDetailsPic(null);
     } else {

@@ -5,6 +5,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 //import helpers
 import submitUserDetails from "./Helpers/submitUserDetails";
 
+import navigateProfilePage from "../Profile Page/Helpers/navigateProfilePage";
+
 export default function DetailsForm() {
   //state variables to handle user data
   const [bio, setBio] = useState("");
@@ -42,6 +44,9 @@ export default function DetailsForm() {
 
   return (
     <div>
+      <button onClick={() => navigateProfilePage(studentId, navigate)}>
+        Profile Page
+      </button>
       <form onSubmit={handleSubmit}>
         <label>Bio</label>
         <textarea

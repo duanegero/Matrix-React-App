@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 //import helper function
 import fetchUserDetails from "./Helpers/fetchUserDetails";
 import navigateDetailsPage from "../Details Page/Helpers/navigateDetailsPage";
+import handleLogout from "../handleLogout";
 
 export default function ProfileCard() {
   //state variables to handle user data
@@ -14,6 +15,7 @@ export default function ProfileCard() {
   const [githubUrl, setGithubUrl] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
+  const [profilePic, setProfilePic] = useState("");
 
   //variable to handle location import
   const location = useLocation();
@@ -33,7 +35,8 @@ export default function ProfileCard() {
       setGithubUrl,
       setLinkedinUrl,
       setFirstname,
-      setLastname
+      setLastname,
+      setProfilePic
     );
   }, [studentId]);
 
@@ -42,6 +45,13 @@ export default function ProfileCard() {
       <h2>
         {firstname} {lastname}'s Profile
       </h2>
+      {Boolean(profilePic) && (
+        <img
+          src={profilePic}
+          alt={`${firstname} ${lastname}'s Profile`}
+          className="w-48 h-48 rounded-full object-cover "
+        />
+      )}
       <p>Bio: {bio}</p>
       <p>Completion Year: {completionYear}</p>
       <p>
@@ -59,6 +69,7 @@ export default function ProfileCard() {
       <button onClick={() => navigateDetailsPage(studentId, navigate)}>
         Update
       </button>
+      <button onClick={() => handleLogout(navigate)}>Logout</button>
     </div>
   );
 }
