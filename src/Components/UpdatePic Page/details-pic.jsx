@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import submitPicture from "./Helpers/submitPicture";
+import submitPicture from "../Details Page/Helpers/submitPicture";
 import buttonStyle from "../Styles/buttonStyle";
 
 export default function DetailsPic() {
