@@ -2,6 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../supabaseClient";
+import { FaUser } from "react-icons/fa";
+import { MdOutlineEmail } from "react-icons/md";
+import { TbLockPassword } from "react-icons/tb";
 
 //importing helper function
 import submitUserLogin from "./Helpers/submitUserLogin";
@@ -40,38 +43,66 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen w-screen">
-      <button
-        className={buttonStyle()}
-        onClick={() => navigateSignUpPage(navigate)}
-      >
-        signUp
-      </button>
+    <div className="flex flex-col justify-center items-center h-screen w-screen mt-10">
+      <div className="flex justify-center items-center pb-8 border-2 border-gray-500 w-110 pt-8 bg-gray-100 text-2xl font-semibold tracking-wider">
+        <FaUser className="text-gray-700 mr-3" />
+        <span className="text-blue-400 font-rubikone">WELCOME BACK!</span>
+      </div>
       <form
         onSubmit={handleSubmit}
-        className="relative w-96 border-2 rounded-4xl shadow-2xl p-30 "
+        className="relative w-110 border-2 border-gray-500 pt-10 bg-gray-50"
       >
-        <div>
-          <p>Login</p>
+        <div className="flex justify-center">
+          <div className="flex flex-col items-start w-full max-w-xs space-y-1 pb-10">
+            <label className="font-rubikone font-semibold tracking-widest">
+              EMAIL
+            </label>
+            <div className="flex items-center w-full border-b-2 border-gray-300 focus-within:border-black">
+              <MdOutlineEmail className="text-gray-500 mr-3 text-2xl" />
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full focus:outline-none focus:ring-0"
+              />
+            </div>
+            <label className="font-rubikone font-semibold tracking-widest pt-4">
+              PASSWORD
+            </label>
+
+            <div className="flex items-center w-full border-b-2 border-gray-300 focus-within:border-black">
+              <TbLockPassword className="text-gray-500 mr-3 text-2xl" />
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full focus:outline-none focus:ring-0"
+              ></input>
+            </div>
+          </div>
         </div>
-        <div>
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></input>
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          ></input>
+        <div className="flex justify-center items-center mb-10">
+          <button className={buttonStyle()} type="submit">
+            Sign In
+          </button>
         </div>
-        <button className={buttonStyle()} type="submit">
-          Sign In
-        </button>
       </form>
+      <div className="flex flex-row border-2 border-gray-500 w-110 pt-8 bg-gray-100">
+        <div className="flex-1 flex justify-center mb-5 ">
+          <button
+            onClick={() => navigateSignUpPage(navigate)}
+            className="font-rubik tracking-wider text-gray-600 hover:text-blue-400 cursor-pointer"
+          >
+            Don't have an account?
+          </button>
+        </div>
+
+        <div className="flex-1 flex justify-center mb-5">
+          <button className="font-rubik tracking-wider text-gray-600 hover:text-blue-400 cursor-pointer">
+            Forgot Password?
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
