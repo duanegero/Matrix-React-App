@@ -6,12 +6,14 @@ import SignUp from "./Pages/SignUp";
 import Details from "./Pages/Details";
 import Profile from "./Pages/Profile";
 import UpdatePic from "./Pages/UpdatePic";
+import Home from "./Pages/Home";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Home />} />
+        <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="details" element={<Details />} />
         <Route path="profile" element={<Profile />} />
