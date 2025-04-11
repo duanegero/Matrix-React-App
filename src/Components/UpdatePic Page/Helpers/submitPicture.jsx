@@ -41,6 +41,9 @@ const submitPicture = async (file, studentId) => {
     if (updateError) {
       return { success: false, error: updateError.message };
     }
+    alert("Account Photo Uploaded");
+    window.close();
+
     //if succsees truen true and url of image
     return { success: true, url: publicUrl };
   } catch (err) {

@@ -1,8 +1,9 @@
 //iports from react
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { IoCloudUploadOutline } from "react-icons/io5";
 
-import submitPicture from "../Details Page/Helpers/submitPicture";
+import submitPicture from "./Helpers/submitPicture";
 import buttonStyle from "../Styles/buttonStyle";
 
 export default function DetailsPic() {
@@ -51,12 +52,30 @@ export default function DetailsPic() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <label>Upload Profile Picture</label>
-        <input type="file" name="image" onChange={handleFileChange}></input>
-        <button className={buttonStyle()} type="submit">
+      <header className="flex justify-between items-center border-b-2 border-b-gray-400 bg-gray-200">
+        <p className="flex items-center pl-4 font-rubikone text-3xl tracking-wider text-gray-400 pt-4 pb-4">
+          <IoCloudUploadOutline />
           Upload
-        </button>
+        </p>
+      </header>
+      <form
+        className="pt-18 flex flex-col justify-center items-center bg-gray-100 border-b-2 border-gray-400"
+        onSubmit={handleSubmit}
+      >
+        <label className="font-rubikone text-2xl text-gray-400 pb-14">
+          Account Photo
+        </label>
+        <input
+          type="file"
+          name="image"
+          onChange={handleFileChange}
+          className="p-2 bg-transparent border-b-2 border-gray-300 shadow-2xl focus:outline-none focus:border-blue-500 mb-20"
+        ></input>
+        <div className="pb-30">
+          <button className={buttonStyle()} type="submit">
+            Upload
+          </button>
+        </div>
       </form>
     </div>
   );
