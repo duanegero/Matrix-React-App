@@ -12,7 +12,6 @@ import fetchUserDetails from "./Helpers/fetchUserDetails";
 import navigateDetailsPage from "../Details Page/Helpers/navigateDetailsPage";
 import handleLogout from "../handleLogout";
 import { supabase } from "../../supabaseClient";
-import buttonStyle from "../Styles/buttonStyle";
 import openProfilePic from "../UpdatePic Page/Helpers/openProfilePic";
 
 export default function ProfileCard() {

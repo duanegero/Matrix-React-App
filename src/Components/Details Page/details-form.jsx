@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { supabase } from "../../supabaseClient";
+import { FaUserEdit } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
 
 //import helpers
 import submitUserDetails from "./Helpers/submitUserDetails";
@@ -62,41 +64,78 @@ export default function DetailsForm() {
 
   return (
     <div>
-      <button
-        className={buttonStyle()}
-        onClick={() => navigateProfilePage(studentId, navigate)}
+      <header className="flex justify-between items-center border-b-2 border-b-gray-400 bg-gray-200">
+        <p className="flex items-center pl-4 font-rubikone text-3xl tracking-tighter text-gray-400 pt-4 pb-4">
+          <FaUserEdit className="text-3xl text-gray-400" />
+          EDIT
+        </p>
+        <button
+          onClick={() => navigateProfilePage(studentId, navigate)}
+          className="flex items-center text-2xl p-3 font-rubikone text-gray-400 hover:text-blue-400 cursor-pointer"
+        >
+          <CgProfile />
+          Profile
+        </button>
+      </header>
+      <div className=" bg-gray-100 pt-6">
+        <p className="flex justify-center items-center font-rubik text-gray-500">
+          Update your profile with the latest information by editing one or more
+          fields below.
+        </p>
+      </div>
+      <form
+        className="justify-center items-center grid grid-cols-2 gap-y-18 gap-x-12 p-4 pt-10 pb-26 bg-gray-100"
+        onSubmit={handleSubmit}
+        id="profileForm"
       >
-        Profile Page
-      </button>
-      <form onSubmit={handleSubmit}>
-        <label>Bio</label>
-        <textarea
-          type="text"
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
-        ></textarea>
-        <label>Completion Year</label>
-        <input
-          type="date"
-          value={completionYear}
-          onChange={(e) => setCompletionYear(e.target.value)}
-        ></input>
-        <label>Linkedin Url</label>
-        <input
-          type="url"
-          value={linkedinUrl}
-          onChange={(e) => setLinkedinUrl(e.target.value)}
-        ></input>
-        <label>Git Hub</label>
-        <input
-          type="url"
-          value={githubUrl}
-          onChange={(e) => setGithubUrl(e.target.value)}
-        ></input>
-        <button className={buttonStyle()} type="submit">
+        <div className="flex flex-col">
+          <label className="font-rubikone text-2xl text-gray-400">Bio</label>
+          <textarea
+            rows="6"
+            className="mt-2 p-3 border-2 border-gray-300 rounded-md bg-gray-100 hover:bg-white focus:outline-none focus:ring focus:ring-blue-400 text-lg font-rubik text-gray-600 tracking-wide shadow-2xl"
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+          ></textarea>
+        </div>
+        <div className="flex flex-col">
+          <label className="font-rubikone text-2xl text-gray-400">
+            Completion Date
+          </label>
+          <input
+            type="date"
+            className="p-2 bg-transparent border-b-2 border-gray-300 shadow-2xl focus:outline-none focus:border-blue-500"
+            value={completionYear}
+            onChange={(e) => setCompletionYear(e.target.value)}
+          />
+        </div>
+        <div className="flex flex-col">
+          <label className="font-rubikone text-2xl text-gray-400">
+            Linkedin
+          </label>
+          <input
+            type="url"
+            className="p-2 bg-transparent border-b-2 border-gray-300 shadow-2xl focus:outline-none focus:border-blue-500"
+            value={linkedinUrl}
+            onChange={(e) => setLinkedinUrl(e.target.value)}
+            placeholder="URL"
+          ></input>
+        </div>
+        <div className="flex flex-col">
+          <label className="font-rubikone text-2xl text-gray-400">GitHub</label>
+          <input
+            type="url"
+            className="p-2 bg-transparent border-b-2 border-gray-300 shadow-2xl focus:outline-none focus:border-blue-500"
+            value={githubUrl}
+            onChange={(e) => setGithubUrl(e.target.value)}
+            placeholder="URL"
+          ></input>
+        </div>
+      </form>
+      <div className="flex justify-center items-center bg-gray-100 pb-20 border-b-2 border-gray-400">
+        <button form="profileForm" className={buttonStyle()} type="submit">
           Submit
         </button>
-      </form>
+      </div>
     </div>
   );
 }
