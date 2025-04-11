@@ -1,5 +1,5 @@
 const navigateLoginPage = (navigate) => {
-  navigate("/");
+  navigate("/login");
 };
 
 export default navigateLoginPage;

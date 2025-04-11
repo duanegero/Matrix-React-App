@@ -12,7 +12,7 @@ const handleLogout = async (navigate) => {
     return;
   } else {
     console.log("Logged out successfully.");
-    navigate("/");
+    navigate("/login");
   }
 };
 

@@ -46,7 +46,7 @@ export default function ProfileCard() {
 
       //if no session, redirect to login
       if (!session) {
-        navigate("/", { replace: true });
+        navigate("/login", { replace: true });
         return;
       }
 
