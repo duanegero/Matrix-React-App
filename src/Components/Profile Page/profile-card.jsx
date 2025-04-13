@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import { MdEdit } from "react-icons/md";
 import { VscSignOut } from "react-icons/vsc";
+import { RiImageAddLine } from "react-icons/ri";
 
 import dayjs from "dayjs";
 
@@ -83,13 +84,21 @@ export default function ProfileCard() {
         </button>
       </header>
       <div className="flex items-center border-b-2 bg-gray-100">
-        {Boolean(profilePic) && (
+        {profilePic ? (
           <img
             onClick={() => openProfilePic(studentId)}
             src={profilePic}
             alt={`${firstname} ${lastname}'s Profile`}
             className="w-64 h-64 mt-6 mb-6 ml-10  border-2 border-gray-200 rounded-full object-cover max-w-full max-h-full cursor-pointer"
           />
+        ) : (
+          <div
+            onClick={() => openProfilePic(studentId)}
+            className="w-64 h-64 mt-6 mb-6 ml-10 border-2 border-gray-200 rounded-full object-cover max-w-full max-h-full cursor-pointer flex flex-col items-center justify-center font-rubik tracking-widest text-xl text-gray-400"
+          >
+            <RiImageAddLine />
+            Upload Photo
+          </div>
         )}
         <h2 className="ml-20 font-rubikone text-6xl text-gray-600">
           {firstname} {lastname}

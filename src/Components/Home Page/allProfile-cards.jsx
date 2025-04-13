@@ -2,26 +2,51 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TbBrandMatrix } from "react-icons/tb";
+import { VscSignIn } from "react-icons/vsc";
 
+//importing herlper functions
 import fetchAllUsers from "./Helpers/fetchAllUsers";
+import navigateLoginPage from "../Login Page/Helpers/navigateLoginPage";
 
+//import dayjs
 import dayjs from "dayjs";
 
 export default function AllProfileCards() {
+  //state variable to handle array of users
   const [users, setUsers] = useState([]);
+  //variable to handle navigate
   const navigate = useNavigate();
 
+  //
   useEffect(() => {
+    //async function to handle helper function
     const getUsers = async () => {
+      //variable to to handle returned from helper function
       const allUsers = await fetchAllUsers();
       setUsers(allUsers);
     };
+    //call the function
     getUsers();
   }, []);
 
   return (
     <div>
+      <header className="flex justify-between items-center border-b-2 border-b-gray-400 bg-gray-200">
+        <p className="flex items-center pl-4 font-rubikone text-3xl tracking-wider text-gray-400 pt-4 pb-4">
+          <TbBrandMatrix />
+          Matrix Profiles
+        </p>
+        <button
+          onClick={() => navigateLoginPage(navigate)}
+          className="flex items-center text-2xl p-3 font-rubikone text-gray-400 hover:text-blue-400 cursor-pointer"
+        >
+          <VscSignIn />
+          Login
+        </button>
+      </header>
+
       {users.map((user) => {
+        //loop through the users array and destructure the properties
         const {
           id,
           bio,
@@ -33,14 +58,12 @@ export default function AllProfileCards() {
           lastname,
         } = user;
 
+        //format the date to readable date
+        const formattedCompletionYear =
+          dayjs(completion_year).format("MMMM YYYY");
+
         return (
           <div key={id}>
-            <header className="flex justify-between items-center border-b-2 border-b-gray-400 bg-gray-200">
-              <p className="flex items-center pl-4 font-rubikone text-3xl tracking-wider text-gray-400 pt-4 pb-4">
-                <TbBrandMatrix />
-                Matrix Profiles
-              </p>
-            </header>
             <div className="flex items-center border-b-2 bg-gray-100">
               {profile_pic_url && (
                 <img
@@ -68,7 +91,7 @@ export default function AllProfileCards() {
                     Completion Year:
                   </h3>
                   <p className="font-rubik tracking-wide text-lg text-gray-500">
-                    {completion_year}
+                    {formattedCompletionYear}
                   </p>
                 </div>
                 <div className="flex flex-col">
