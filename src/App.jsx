@@ -7,6 +7,7 @@ import Details from "./Pages/Details";
 import Profile from "./Pages/Profile";
 import UpdatePic from "./Pages/UpdatePic";
 import Home from "./Pages/Home";
+import ForgotPassword from "./Pages/ForgotPassword";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="details" element={<Details />} />
         <Route path="profile" element={<Profile />} />
         <Route path="updatepic" element={<UpdatePic />} />
+        <Route path="forgotpassword" element={<ForgotPassword />} />
       </Routes>
     </BrowserRouter>
   );
