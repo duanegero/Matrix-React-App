@@ -6,7 +6,7 @@ const sendResetLink = async (email, setEmail, setMessage) => {
   try {
     //call to supabase, sending the reset link to email provided
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: "http://localhost:5173",
+      redirectTo: "http://localhost:5173/resetpassword",
     });
 
     //if error returned set message with error

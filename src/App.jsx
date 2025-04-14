@@ -8,6 +8,7 @@ import Profile from "./Pages/Profile";
 import UpdatePic from "./Pages/UpdatePic";
 import Home from "./Pages/Home";
 import ForgotPassword from "./Pages/ForgotPassword";
+import ResetPassword from "./Pages/ResetPassword";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="profile" element={<Profile />} />
         <Route path="updatepic" element={<UpdatePic />} />
         <Route path="forgotpassword" element={<ForgotPassword />} />
+        <Route path="resetpassword" element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   );

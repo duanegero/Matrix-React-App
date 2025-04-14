@@ -10,6 +10,7 @@ import { TbLockPassword } from "react-icons/tb";
 import submitUserLogin from "./Helpers/submitUserLogin";
 import navigateSignUpPage from "../SignUp Page/Helpers/navigateSignUpPage";
 import buttonStyle from "../Styles/buttonStyle";
+import navigateForgotPasswordPage from "../ForgotPassword Page/Helpers/navigateForgotPassword";
 
 //defining function
 export default function LoginForm() {
@@ -97,7 +98,10 @@ export default function LoginForm() {
           </button>
         </div>
 
-        <div className="flex-1 flex justify-center mb-5">
+        <div
+          onClick={() => navigateForgotPasswordPage(navigate)}
+          className="flex-1 flex justify-center mb-5"
+        >
           <button className="font-rubik tracking-wider text-gray-600 hover:text-blue-400 cursor-pointer">
             Forgot Password?
           </button>
