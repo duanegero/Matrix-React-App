@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "../Components/Login Page/login-form";
 import naviageHome from "../Components/Home Page/Helpers/navigateHome";
+import { FaHome } from "react-icons/fa";
 
 export default function Login() {
   useEffect(() => {
@@ -19,9 +20,10 @@ export default function Login() {
   return (
     <>
       <button
-        className="absolute top-5 right-5 flex items-center text-2xl p-3 font-rubikone text-gray-400 hover:text-blue-400 cursor-pointer"
+        className="absolute top-5 right-5 flex items-center text-2xl p-3 font-rubikone text-gray-800 hover:text-white cursor-pointer"
         onClick={() => naviageHome(navigate)}
       >
+        <FaHome className="mr-2" />
         Home
       </button>
       <LoginForm />
