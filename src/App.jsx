@@ -21,7 +21,7 @@ function App() {
         <Route path="profile" element={<Profile />} />
         <Route path="updatepic" element={<UpdatePic />} />
         <Route path="forgotpassword" element={<ForgotPassword />} />
-        <Route path="resetpassword" element={<ResetPassword />} />
+        <Route path="/resetpassword" element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   );
