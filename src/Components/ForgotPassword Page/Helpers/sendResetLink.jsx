@@ -1,12 +1,14 @@
 //importing supabase
 import { supabase } from "../../../supabaseClient";
 
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 //defining async function with passed in variables
 const sendResetLink = async (email, setEmail, setMessage) => {
   try {
     //call to supabase, sending the reset link to email provided
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: "http://localhost:5173/resetpassword",
+      redirectTo: `${baseUrl}/resetpassword`,
     });
 
     //if error returned set message with error
