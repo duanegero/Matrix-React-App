@@ -20,7 +20,7 @@ export default function Login() {
   return (
     <>
       <button
-        className="absolute top-5 right-5 flex items-center text-2xl p-3 font-rubikone text-gray-800 hover:text-white cursor-pointer"
+        className="absolute top-5 right-5 flex items-center text-2xl p-3 font-rubikone text-gray-800 hover:text-white cursor-pointer tracking-wider"
         onClick={() => naviageHome(navigate)}
       >
         <FaHome className="mr-2" />

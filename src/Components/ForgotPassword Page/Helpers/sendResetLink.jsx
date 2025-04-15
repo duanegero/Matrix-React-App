@@ -5,7 +5,7 @@ const baseUrl =
   import.meta.env.VITE_BASE_URL || "https://matrix-react-app-flax.vercel.app";
 
 //defining async function with passed in variables
-const sendResetLink = async (email, setEmail, setMessage) => {
+const sendResetLink = async (email, setEmail, setMessage, navigate) => {
   try {
     //call to supabase, sending the reset link to email provided
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
@@ -19,6 +19,7 @@ const sendResetLink = async (email, setEmail, setMessage) => {
       //else set success message and clear input
       setMessage("Reset link sent to email.");
       setEmail("");
+      setTimeout(() => navigate("/login"), 5000);
     }
   } catch (error) {
     //catch if any other errors

@@ -1,5 +1,6 @@
 //imports from React
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { MdOutlineEmail } from "react-icons/md";
 import buttonStyle from "../Styles/buttonStyle";
 import sendResetLink from "./Helpers/sendResetLink";
@@ -9,11 +10,13 @@ export default function ForgotForm() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
+  const navigate = useNavigate();
+
   //async function to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     //call the helper with passed in variables
-    await sendResetLink(email, setEmail, setMessage);
+    await sendResetLink(email, setEmail, setMessage, navigate);
   };
 
   return (
@@ -47,7 +50,11 @@ export default function ForgotForm() {
           </button>
         </div>
       </form>
-      {message && <p>{message}</p>}
+      {message && (
+        <p className="mt-5 font-rubik text-white text-xl tracking-wide">
+          {message}
+        </p>
+      )}
     </div>
   );
 }

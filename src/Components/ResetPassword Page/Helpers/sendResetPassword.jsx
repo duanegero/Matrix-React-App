@@ -19,6 +19,7 @@ const sendResetPassword = async (
       setPassword("");
       setConfirmPassword("");
       setMessage("Password updated successfully. Please log in again.");
+      setTimeout(() => navigate("/login"), 5000);
     }
   } catch (error) {
     setMessage("Unexpected error: " + error.message);

@@ -95,7 +95,11 @@ export default function ResetForm() {
           </button>
         </div>
       </form>
-      {message && <p>{message}</p>}
+      {message && (
+        <p className="mt-5 font-rubik text-white text-xl tracking-wide">
+          {message}
+        </p>
+      )}
     </div>
   );
 }
