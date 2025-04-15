@@ -10,21 +10,30 @@ const sendResetPassword = async (
   setMessage
 ) => {
   try {
+    const { error: sessionError } = await supabase.auth.setSession({
+      access_token: token,
+      refresh_token: "",
+    });
+
+    if (sessionError) {
+      setMessage("Invalid or expired link.");
+      return;
+    }
+
     //query to supabase confirming user is auth from reset link
-    const { error } = await supabase.auth.api.resetPasswordForEmail(
-      token,
-      password
-    );
+    const { error } = await supabase.auth.api.resetPasswordForEmail({
+      password,
+    });
 
     if (error) {
       setMessage("Error resetting password:" + error.message);
       return;
+    } else {
+      //else clear inputs, set success message
+      setPassword("");
+      setConfirmPassword("");
+      setMessage("Password updated, navigate to login.");
     }
-
-    //else clear inputs, set success message
-    setPassword("");
-    setConfirmPassword("");
-    setMessage("Password updated, navigate to login.");
   } catch (error) {
     setMessage("Unexpected error:" + error.message);
   }
