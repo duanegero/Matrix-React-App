@@ -15,6 +15,7 @@ export default function ResetForm() {
   const [message, setMessage] = useState("");
 
   const location = useLocation();
+  console.log("Recovery code from URL:", code);
   const queryParams = new URLSearchParams(location.search);
   const code = queryParams.get("code");
 
