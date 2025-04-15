@@ -1,5 +1,6 @@
 //imports from React
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { TbLockPassword } from "react-icons/tb";
 import buttonStyle from "../Styles/buttonStyle";
 
@@ -12,6 +13,10 @@ export default function ResetForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
 
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const token = queryParams.get("access_token");
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -19,6 +24,7 @@ export default function ResetForm() {
     if (password === confirmPassword) {
       await sendResetPassword(
         password,
+        token,
         setPassword,
         setConfirmPassword,
         setMessage

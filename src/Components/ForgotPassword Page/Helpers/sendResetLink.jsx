@@ -1,7 +1,8 @@
 //importing supabase
 import { supabase } from "../../../supabaseClient";
 
-const baseUrl = import.meta.env.VITE_BASE_URL;
+const baseUrl =
+  import.meta.env.VITE_BASE_URL || "https://matrix-react-app-flax.vercel.app";
 
 //defining async function with passed in variables
 const sendResetLink = async (email, setEmail, setMessage) => {
