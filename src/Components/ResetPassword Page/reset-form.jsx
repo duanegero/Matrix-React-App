@@ -1,6 +1,6 @@
 //imports from React
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { TbLockPassword } from "react-icons/tb";
 import buttonStyle from "../Styles/buttonStyle";
 
@@ -14,6 +14,7 @@ export default function ResetForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
 
+  const navigate = useNavigate();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const code = queryParams.get("code");
@@ -42,7 +43,8 @@ export default function ResetForm() {
         password,
         setPassword,
         setConfirmPassword,
-        setMessage
+        setMessage,
+        navigate
       );
     } else {
       //else alert error and clear inputs

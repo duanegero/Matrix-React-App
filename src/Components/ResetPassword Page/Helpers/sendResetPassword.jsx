@@ -6,7 +6,8 @@ const sendResetPassword = async (
   password,
   setPassword,
   setConfirmPassword,
-  setMessage
+  setMessage,
+  navigate
 ) => {
   try {
     const { data, error } = await supabase.auth.updateUser({
