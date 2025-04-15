@@ -16,6 +16,7 @@ export default function SignUpForm() {
   const [lastname, setLastname] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
 
+  //variable to handle navigation
   const navigate = useNavigate();
 
   //async function to handle form submit

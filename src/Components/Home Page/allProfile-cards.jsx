@@ -8,7 +8,7 @@ import { VscSignIn } from "react-icons/vsc";
 import fetchAllUsers from "./Helpers/fetchAllUsers";
 import navigateLoginPage from "../Login Page/Helpers/navigateLoginPage";
 
-//import dayjs
+//import dayjs to format time
 import dayjs from "dayjs";
 
 export default function AllProfileCards() {
@@ -17,7 +17,6 @@ export default function AllProfileCards() {
   //variable to handle navigate
   const navigate = useNavigate();
 
-  //
   useEffect(() => {
     //async function to handle helper function
     const getUsers = async () => {
