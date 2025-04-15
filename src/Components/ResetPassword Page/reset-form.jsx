@@ -16,7 +16,6 @@ export default function ResetForm() {
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const token = queryParams.get("access_token");
   const code = queryParams.get("code");
 
   useEffect(() => {
