@@ -6,6 +6,7 @@ import buttonStyle from "../Styles/buttonStyle";
 
 //import helper function
 import sendResetPassword from "./Helpers/sendResetPassword";
+import { supabase } from "../../supabaseClient";
 
 export default function ResetForm() {
   //state variables to handle user input
@@ -16,6 +17,23 @@ export default function ResetForm() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const token = queryParams.get("access_token");
+  const code = queryParams.get("code");
+
+  useEffect(() => {
+    const exchangeRecoveryCode = async () => {
+      if (code) {
+        const { data, error } = await supabase.auth.exchangeCodeForSession(
+          code
+        );
+        if (error) {
+          setMessage("Reset link is invalid or expired.");
+          console.error("Exchange error:", error.message);
+        }
+      }
+    };
+
+    exchangeRecoveryCode();
+  }, [code]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
