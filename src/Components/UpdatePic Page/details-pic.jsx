@@ -44,6 +44,8 @@ export default function DetailsPic() {
       console.log(result);
       console.log("Image Url:", result.url);
       setSelectedDetailsPic(null);
+      alert("Account Photo Uploaded");
+      window.close();
     } else {
       alert("Failed to upload picture: " + result.error);
       console.error("Upload error:", result.error);
