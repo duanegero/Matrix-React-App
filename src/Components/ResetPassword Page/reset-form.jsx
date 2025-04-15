@@ -15,16 +15,14 @@ export default function ResetForm() {
   const [message, setMessage] = useState("");
 
   const location = useLocation();
-  console.log("Recovery code from URL:", code);
   const queryParams = new URLSearchParams(location.search);
   const code = queryParams.get("code");
+  console.log("Recovery code from URL:", code);
 
   useEffect(() => {
     const exchangeRecoveryCode = async () => {
       if (code) {
-        const { data, error } = await supabase.auth.exchangeCodeForSession(
-          code
-        );
+        const { error } = await supabase.auth.exchangeCodeForSession(code);
         if (error) {
           setMessage("Reset link is invalid or expired.");
           console.error("Exchange error:", error.message);
@@ -42,7 +40,6 @@ export default function ResetForm() {
     if (password === confirmPassword) {
       await sendResetPassword(
         password,
-        token,
         setPassword,
         setConfirmPassword,
         setMessage
