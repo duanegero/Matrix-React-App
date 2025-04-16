@@ -5,6 +5,8 @@ This is a web application built using React and Vite, providing users with an in
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
+- [Tech Stack](#techstack)
+- [Screenshots](#screenshots)
 
 ## Installation
 
@@ -19,22 +21,22 @@ This is a web application built using React and Vite, providing users with an in
 
 ## Usage
 
-Once the app is running, it will establish a connection with Supabase, allowing users to:
+Once the app is running, it will establish a connection with <strong>Supabase</strong>, allowing users to:
 
-- Sign up and log in securely
-- View and edit their personal profile details
-- Send and retrieve data from the database in real time
-- Perform Create, Read, Update, and Delete operations through the UI
+- <strong>Sign up</strong> and <strong>log in</strong> securely
+- <strong>View</strong> and <strong>edit</strong> their personal profile details
+- <strong>Send</strong> and <strong>retrieve</strong> data from the database in real time
+- Perform <strong>Create, Read, Update, and Delete</strong> operations through the UI
 
-The app is designed to provide a smooth and responsive user experience, with real-time feedback and clear error handling.
+## Tech Stack
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- React
+- Vite
+- Supabase
+- JavaScript (ES6+)
+- HTML & CSS
 
-Currently, two official plugins are available:
+## Screenshots
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+![Login Page](./images/LoginPage.png)
+![Sign Up Page](./images/SignUp.png)
