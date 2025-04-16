@@ -20,6 +20,9 @@ const submitUserLogin = async (
   if (error.message === "Invalid login credentials") {
     alert("Invalid login credentials");
     console.error("Login failed:", error.message);
+  } else if (error.message === "Email not confirmed") {
+    alert("Email not confirmed");
+    console.error("Login failed:", error.message);
   } else if (error) {
     console.error("Login failed:", error.message);
   } else {
