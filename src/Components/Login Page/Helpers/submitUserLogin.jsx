@@ -17,7 +17,10 @@ const submitUserLogin = async (
   });
 
   //if else to handle whats returned from supabase
-  if (error) {
+  if (error.message === "Invalid login credentials") {
+    alert("Invalid login credentials");
+    console.error("Login failed:", error.message);
+  } else if (error) {
     console.error("Login failed:", error.message);
   } else {
     const userId = data.user.id;
