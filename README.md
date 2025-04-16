@@ -1,4 +1,32 @@
-# React + Vite
+# Matrix React + Vite App
+
+This is a web application built using React and Vite, providing users with an interactive interface to connect to a Supabase db and send CRUD requests.
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+
+## Installation
+
+1. Clone Repository<br>
+   `git clone https://github.com/duanegero/Matrix-React-App.git`
+2. Navigate to the Project Directory<br>
+   `cd Matrix-React-App`
+3. Install Dependencies:<br>
+   `npm install`
+4. Start App<br>
+   `npm run dev`
+
+## Usage
+
+Once the app is running, it will establish a connection with Supabase, allowing users to:
+
+- Sign up and log in securely
+- View and edit their personal profile details
+- Send and retrieve data from the database in real time
+- Perform Create, Read, Update, and Delete operations through the UI
+
+The app is designed to provide a smooth and responsive user experience, with real-time feedback and clear error handling.
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
