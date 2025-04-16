@@ -72,7 +72,7 @@ export default function AllProfileCards() {
                   className="w-64 h-64 mt-6 mb-6 ml-10  border-2 border-gray-200 rounded-full object-cover max-w-full max-h-full"
                 />
               ) : (
-                <div className="w-64 h-64 mt-6 mb-6 ml-10 border-2 border-gray-200 rounded-full object-cover max-w-full max-h-full cursor-pointer flex flex-col items-center justify-center font-rubik tracking-widest text-xl text-gray-400">
+                <div className="w-64 h-64 mt-6 mb-6 ml-10 border-2 border-gray-200 rounded-full object-cover max-w-full max-h-full  flex flex-col items-center justify-center font-rubik tracking-widest text-xl text-gray-400">
                   <MdOutlineImageNotSupported />
                   No Photo
                 </div>
