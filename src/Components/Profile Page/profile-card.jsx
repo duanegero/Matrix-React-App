@@ -100,7 +100,7 @@ export default function ProfileCard() {
             Upload Photo
           </div>
         )}
-        <h2 className="ml-20 font-rubikone text-6xl text-gray-600">
+        <h2 className="ml-10 font-rubikone text-4xl text-gray-600">
           {firstname} {lastname}
         </h2>
       </div>

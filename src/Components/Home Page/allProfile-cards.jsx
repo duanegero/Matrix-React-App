@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TbBrandMatrix } from "react-icons/tb";
 import { VscSignIn } from "react-icons/vsc";
+import { MdOutlineImageNotSupported } from "react-icons/md";
 
 //importing herlper functions
 import fetchAllUsers from "./Helpers/fetchAllUsers";
@@ -64,12 +65,17 @@ export default function AllProfileCards() {
         return (
           <div key={id}>
             <div className="flex items-center border-b-2 bg-gray-100">
-              {profile_pic_url && (
+              {profile_pic_url ? (
                 <img
                   src={profile_pic_url}
                   alt={`${firstname} ${lastname}'s Profile`}
                   className="w-64 h-64 mt-6 mb-6 ml-10  border-2 border-gray-200 rounded-full object-cover max-w-full max-h-full"
                 />
+              ) : (
+                <div className="w-64 h-64 mt-6 mb-6 ml-10 border-2 border-gray-200 rounded-full object-cover max-w-full max-h-full cursor-pointer flex flex-col items-center justify-center font-rubik tracking-widest text-xl text-gray-400">
+                  <MdOutlineImageNotSupported />
+                  No Photo
+                </div>
               )}
               <h2 className="ml-10 font-rubikone text-4xl text-gray-600">
                 {firstname} {lastname}

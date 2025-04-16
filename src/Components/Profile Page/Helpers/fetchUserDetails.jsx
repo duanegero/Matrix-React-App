@@ -19,7 +19,7 @@ const fetchUserDetails = async (
     .from("Students_Details")
     .select("*")
     .eq("id", studentId)
-    .single();
+    .maybeSingle();
 
   //if error log for user, else set states with whats returned
   if (detailsError) {
@@ -37,7 +37,7 @@ const fetchUserDetails = async (
     .from("Students_Profile")
     .select("*")
     .eq("id", studentId)
-    .single();
+    .maybeSingle();
 
   //if error log for user, else set states with whats returned
   if (profileError) {
